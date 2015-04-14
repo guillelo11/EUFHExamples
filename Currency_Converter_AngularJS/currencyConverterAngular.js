@@ -21,10 +21,14 @@ angular.module('currencyConverterApp', [])
         console.log(status);
         //Get the USD rate from the object and set the ratio to the current rate
         $scope.convertionRatio = data.rates.USD;
+        localStorage.setItem("latestRate", $scope.convertionRatio);
       })
       .error(function(data, status, headers, config) {
         //If there was an error log the status code of the request
         console.log(status);
+        if(localStorage.getItem("latestRate") !== null){
+          $scope.convertionRatio = localStorage.getItem("latestRate");
+        }
       });
 
     $scope.convert = function(amount) {
