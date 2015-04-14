@@ -1,0 +1,47 @@
+<!--
+Copyright (c) 2015 by Guillermo López Orozco.
+Distributed under the MIT License.
+(http://opensource.org/licenses/MIT)
+ -->
+
+<!doctype html>
+<!-- Designate the application's root element -->
+<html ng-app='bmiApp'>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <script src="../angular.min.js"></script>
+  <script src="bmi_calculator_angular.js"></script>
+  <title>BMI calculator</title>
+</head>
+
+<!-- Attach the controller to the body tag -->
+
+<body ng-controller='bmiController'>
+  <div class="container">
+    <h1 class="text-center">BMI Calculator</h1>
+    <div class="col-md-4 col-md-offset-4">
+      <div class="form-group">
+        <label for="weight">Weight (Kg)</label>
+        <input id="weight" class="form-control" type="number" step="0.1" ng-model="weight">
+      </div>
+
+      <div class="form-group">
+        <label for="height">Height (m)</label>
+        <input id="height" class="form-control" type="number" step="0.01" ng-model="height">
+      </div>
+
+      <!-- Check if the values of the inputs are valid using the ng-if directive.
+            If they are valid, show the result -->
+        <p ng-if="(weight !== '' && weight >= 1) && (height !== '' && height >= 1)">
+        Your BMI is
+        <!-- Calculate the result and format it using the AngularJs' number filter -->
+        <span id="result">{{weight / (height * height) | number : 1}}</span>
+      </p>
+    </div>
+  </div>
+
+  <body>
+
+</html>

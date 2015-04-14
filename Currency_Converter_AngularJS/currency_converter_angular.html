@@ -1,0 +1,37 @@
+<!--
+Copyright (c) 2015 by Guillermo López Orozco.
+Distributed under the MIT License.
+(http://opensource.org/licenses/MIT)
+ -->
+
+<!doctype html>
+<!-- Designate the application's root element -->
+<html ng-app='currencyConverterApp'>
+
+<head>
+  <meta charset="utf-8">
+  <script src="../angular.min.js"></script>
+  <script src="currencyConverterAngular.js"></script>
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <title>Currency converter</title>
+</head>
+
+<!-- Attach the controller to the body tag -->
+
+<body ng-controller='currencyConverterController'>
+  <div class="container">
+    <h1 class="text-center">Currency converter</h1>
+    <div class="col-md-4 col-md-offset-4">
+      <div class="input-group">
+        <!-- When the input's value changes (ng-change directive) execute the convert function -->
+        <input class="form-control" type="number" step="0.01" ng-model="euros" ng-change="convert(euros)">
+        <span class="input-group-addon">€</span>
+      </div>
+      <!-- Show the result using the AngularJs' currency filter to format it -->
+      <p>{{convertionResult | currency}}</p>
+      <p>1.00 € = {{convertionRatio | currency:"$":4}}</p>
+    </div>
+  </div>
+</body>
+
+</html>
